@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitaciones</title>
+</head>
+<body>
+    <h2>Estas son las habitaciones que tenemos disponibles</h2>
+    <section>
+    {%if no_habitaciones == 0 %}}
+        <article>
+            <h3>Por el momento no tenemos habitaciones disponibles</h3>
+        </article>
+    {% else %}
+        {%for habitacion in habitaciones%}
+        <article>
+            <h4>Precio por noche : {{habitacion.precio_noche}} $</h4>
+            <h4>Numero de dormitorios : {{habitacion.no_dormitorios}}</h4>
+            <p>
+                {{habitacion.descripcion}}
+            </p>
+            <button><a href="reservar/{{habitacion.id}}">Reservar habitacion</a></button>
+            
+        </article>
+        {% endfor %}
+    {% endif %}
+    <h3>Mis reservas</h3>
+
+
+    {%if no_reservas == 0 %}}
+        <article>
+            <h3>no tienes ninguna reserva</h3>
+        </article>
+    {% else %}
+        {%for reserva in reservas%}
+        <article>
+            <h4>numero de noches {{reserva.no_noches}} </h4>
+            
+            <button>Cancelar</button>
+            
+        </article>
+        {% endfor %}
+    {% endif %}
+            
+</section>
+</body>
+</html>
